@@ -9,16 +9,27 @@ import {
   Link,
   LinkText,
 } from "./styles";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { AuthContext } from "../../contexts/auth"; 
 
 import logo from "../../assets/Logo.png";
 
 const SignIn = () => {
   const navigation = useNavigation();
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const inputRef = useRef();
+
+  const {user} = useContext(AuthContext);
+
+  const handleLogin = () => {
+    alert(user.uid+' - '+user.nome);
+
+  }
+
+
   return (
     <Background>
       <Container>
@@ -42,7 +53,7 @@ const SignIn = () => {
             onChangeText={(text) => setPassword(text)}
           />
         </AreaInput>
-        <SubmitButton>
+        <SubmitButton onPress={handleLogin}>
           <SubmitText>Acessar</SubmitText>
         </SubmitButton>
         <Link onPress={() => navigation.navigate('SignUp')}>

@@ -7,15 +7,20 @@ import {
   SubmitButton,
   SubmitText,
 } from "./styles";
-import React, { useState, useRef } from "react";
-
-import logo from "../../assets/Logo.png";
+import React, { useState, useRef, useContext } from "react";
+import { AuthContext } from "../../contexts/auth";
 
 const SignUp = () => {
   const [nome, setNome] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const inputRef = useRef();
+  const { user } = useContext(AuthContext);
+
+  const handleCadastrar = () => {
+    alert(user.uid+' - '+user.nome);
+  };
+
   return (
     <Background>
       <Container>
@@ -48,7 +53,7 @@ const SignUp = () => {
             onChangeText={(text) => setPassword(text)}
           />
         </AreaInput>
-        <SubmitButton>
+        <SubmitButton onPress={handleCadastrar}>
           <SubmitText>Registrar</SubmitText>
         </SubmitButton>
       </Container>

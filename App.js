@@ -1,18 +1,20 @@
-import React from 'react';
+import React from "react";
 
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar,  View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "react-native";
+import AuthProvider from "./src/contexts/auth";
 
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
 
-import Routes from './src/routes';
+import Routes from "./src/routes";
 
 export default function App() {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor='#131313' barStyle="light-content" />
-      <Routes/>
+      <AuthProvider>
+        <StatusBar backgroundColor="#131313" barStyle="light-content" />
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   );
 }
-
