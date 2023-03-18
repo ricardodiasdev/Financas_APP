@@ -15,10 +15,11 @@ const SignUp = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const inputRef = useRef();
-  const { user } = useContext(AuthContext);
 
-  const handleCadastrar = () => {
-    alert(user.uid+' - '+user.nome);
+  const { signUp } = useContext(AuthContext);
+
+  const handleSignUp = () => {
+    signUp(nome, email, password);
   };
 
   return (
@@ -53,7 +54,7 @@ const SignUp = () => {
             onChangeText={(text) => setPassword(text)}
           />
         </AreaInput>
-        <SubmitButton onPress={handleCadastrar}>
+        <SubmitButton onPress={handleSignUp}>
           <SubmitText>Registrar</SubmitText>
         </SubmitButton>
       </Container>

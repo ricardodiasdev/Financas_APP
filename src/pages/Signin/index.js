@@ -25,7 +25,6 @@ const SignIn = () => {
   const {user} = useContext(AuthContext);
 
   const handleLogin = () => {
-    alert(user.uid+' - '+user.nome);
 
   }
 
