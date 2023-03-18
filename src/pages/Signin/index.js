@@ -11,7 +11,7 @@ import {
 } from "./styles";
 import React, { useState, useRef, useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { AuthContext } from "../../contexts/auth"; 
+import { AuthContext } from "../../contexts/auth";
 
 import logo from "../../assets/Logo.png";
 
@@ -22,12 +22,11 @@ const SignIn = () => {
   const [password, setPassword] = useState();
   const inputRef = useRef();
 
-  const {user} = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
 
   const handleLogin = () => {
-
-  }
-
+    signIn(email, password);
+  };
 
   return (
     <Background>
@@ -55,7 +54,7 @@ const SignIn = () => {
         <SubmitButton onPress={handleLogin}>
           <SubmitText>Acessar</SubmitText>
         </SubmitButton>
-        <Link onPress={() => navigation.navigate('SignUp')}>
+        <Link onPress={() => navigation.navigate("SignUp")}>
           <LinkText>Criar uma conta</LinkText>
         </Link>
       </Container>
