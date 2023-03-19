@@ -72,8 +72,12 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     async function loadStorage() {
       const storageUser = await AsyncStorage.getItem("Auth_user");
-      storageUser && setUser(JSON.parse(storageUser));
-      storageUser && setLoading(false);
+      if (storageUser) {
+        setUser(JSON.parse(storageUser));
+        setLoading(false);
+      }
+
+      setLoading(false);
     }
     loadStorage();
   }, []);
