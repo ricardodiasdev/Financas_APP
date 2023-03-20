@@ -17,7 +17,7 @@ const SignUp = () => {
   const [password, setPassword] = useState();
   const inputRef = useRef();
 
-  const { signUp, loadingAuth} = useContext(AuthContext);
+  const { signUp, loadingAuth } = useContext(AuthContext);
 
   const handleSignUp = () => {
     signUp(nome, email, password);
@@ -53,10 +53,11 @@ const SignUp = () => {
             autoCapitalize="none"
             value={password}
             onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
           />
         </AreaInput>
         <SubmitButton onPress={handleSignUp}>
-        {loadingAuth ? (
+          {loadingAuth ? (
             <ActivityIndicator size={25} color="#FFF" />
           ) : (
             <SubmitText>Registrar</SubmitText>
