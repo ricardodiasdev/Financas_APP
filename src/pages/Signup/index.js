@@ -8,6 +8,7 @@ import {
   SubmitText,
 } from "./styles";
 import React, { useState, useRef, useContext } from "react";
+import { ActivityIndicator } from "react-native";
 import { AuthContext } from "../../contexts/auth";
 
 const SignUp = () => {
@@ -16,7 +17,7 @@ const SignUp = () => {
   const [password, setPassword] = useState();
   const inputRef = useRef();
 
-  const { signUp } = useContext(AuthContext);
+  const { signUp, loadingAuth} = useContext(AuthContext);
 
   const handleSignUp = () => {
     signUp(nome, email, password);
@@ -55,7 +56,11 @@ const SignUp = () => {
           />
         </AreaInput>
         <SubmitButton onPress={handleSignUp}>
-          <SubmitText>Registrar</SubmitText>
+        {loadingAuth ? (
+            <ActivityIndicator size={25} color="#FFF" />
+          ) : (
+            <SubmitText>Registrar</SubmitText>
+          )}
         </SubmitButton>
       </Container>
     </Background>

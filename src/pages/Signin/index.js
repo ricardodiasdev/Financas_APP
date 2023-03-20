@@ -9,6 +9,7 @@ import {
   Link,
   LinkText,
 } from "./styles";
+import { ActivityIndicator } from "react-native";
 import React, { useState, useRef, useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../contexts/auth";
@@ -22,7 +23,7 @@ const SignIn = () => {
   const [password, setPassword] = useState();
   const inputRef = useRef();
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, loadingAuth } = useContext(AuthContext);
 
   const handleLogin = () => {
     signIn(email, password);
@@ -52,7 +53,11 @@ const SignIn = () => {
           />
         </AreaInput>
         <SubmitButton onPress={handleLogin}>
-          <SubmitText>Acessar</SubmitText>
+          {loadingAuth ? (
+            <ActivityIndicator size={25} color="#FFF" />
+          ) : (
+            <SubmitText>Acessar</SubmitText>
+          )}
         </SubmitButton>
         <Link onPress={() => navigation.navigate("SignUp")}>
           <LinkText>Criar uma conta</LinkText>
