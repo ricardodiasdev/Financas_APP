@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <Background>
       <Container>
-        <Nome>Ricardo</Nome>
+        <Nome>{user && user.nome}</Nome>
         <Saldo>R$ 12000,00</Saldo>
       </Container>
       <Title>Últimas movimentações</Title>
