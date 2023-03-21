@@ -52,7 +52,7 @@ const New = () => {
       .set({
         tipo: tipo,
         valor: parseFloat(valor),
-        date: format(new Date(), "dd/MM/yy"),
+        date: format(new Date(), "dd/MM/yyyy"),
       });
     //Atualizar o saldo
     let user = firebase.database().ref("users").child(uid);
@@ -63,8 +63,8 @@ const New = () => {
         : (saldo += parseFloat(valor));
       user.child("saldo").set(saldo);
     });
-    Keyboard.dismiss();
     setValor("");
+    Keyboard.dismiss();
     navigation.navigate("Home");
   }
   return (
